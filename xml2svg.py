@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-VectorDrawable2Svg
+xml2svg
 This script converts VectorDrawable .xml files to SVG files.
 Initial author: Alessandro Lucchet
 Modified by: Rohan Talip
@@ -8,6 +8,7 @@ Modified by: Rohan Talip
 
 import argparse
 import os.path
+from glob import glob
 from xml.dom.minidom import Document, parse
 import traceback
 
@@ -169,8 +170,18 @@ def main():
     args = parser.parse_args()
 
     if args.colors_xml_file:
+        for xml_file in args.colors_xml_file:
+            if os.path.isdir(xml_file):
+                args.colors_xml_file.remove(xml_file)
+                args.colors_xml_file += [y for x in os.walk(xml_file) for y in glob(os.path.join(x[0], '*.xml'))]
+
         for colors_xml_file in args.colors_xml_file:
             read_colors_xml(colors_xml_file)
+
+    for xml_file in args.xml_files:
+        if os.path.isdir(xml_file):
+            args.xml_files.remove(xml_file)
+            args.xml_files += [y for x in os.walk(xml_file) for y in glob(os.path.join(x[0], '*.xml'))]
 
     for xml_file in args.xml_files:
         print("Converting", xml_file)

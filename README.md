@@ -1,7 +1,7 @@
-# VectorDrawable2Svg
+# xml2svg
 
 ## Introduction
-The VectorDrawable2Svg.py Python script converts Android VectorDrawable `.xml`
+The xml2svg.py Python script converts Android VectorDrawable `.xml`
 files to `.svg` files.
 
 This repository was forked from
@@ -13,15 +13,15 @@ requests there at the time).
 
 ## Usage
 ```shell
-python3 VectorDrawable2Svg.py a.xml b.xml ...
+python3 xml2svg.py a.xml b.xml ...
 ```
 
 ```shell
-./VectorDrawable2Svg.py --color-xml-file=path/to/color.xml a.xml b.xml ...
+./xml2svg.py --color-xml-file=path/to/color.xml a.xml b.xml ...
 ```
 
 ```shell
-/path/to/VectorDrawable2Svg.py --viewbox-only a.xml b.xml ...
+/path/to/xml2svg.py --viewbox-only a.xml b.xml ...
 ```
 
 The output .svg files are written in the same directory as the .xml files
